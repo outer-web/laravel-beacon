@@ -24,9 +24,13 @@ _ide_helper_models.php
 /.fleet
 /.vscode
 
+# Refactoring
+.php-cs-fixer.cache
+
 # Misc
 phpunit.xml
 phpstan.neon
 testbench.yaml
 /docs
 /coverage
+TODO.md
