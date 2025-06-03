@@ -4,7 +4,9 @@ namespace Outerweb\Beacon;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
 use Jenssegers\Agent\Agent;
 use Outerweb\Beacon\Contracts\BeaconEventTypeContract;
@@ -56,6 +58,7 @@ class Beacon
         $agent = new Agent;
 
         return md5(collect([
+            Cookie::get($this->uuidCookieName()) ?? Str::uuid()->toString(),
             Request::getClientIp(),
             $agent->getUserAgent(),
             $agent->deviceType(),
@@ -82,6 +85,11 @@ class Beacon
     public function apiController(): string
     {
         return Config::string('beacon.controllers.api', BeaconApiController::class);
+    }
+
+    public function uuidCookieName(): string
+    {
+        return Config::string('beacon.cookies.uuid', 'beacon_uuid');
     }
 
     public function deepMerge(array $array1, array $array2): array

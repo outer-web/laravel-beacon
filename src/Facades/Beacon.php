@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static string eventModel()
  * @method static string apiMiddleware()
  * @method static string apiController()
+ * @method static string uuidCookieName()
  * @method static array deepMerge(array $array1, array $array2)
  *
  * @see \Outerweb\Beacon\Beacon

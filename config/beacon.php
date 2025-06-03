@@ -41,4 +41,13 @@ return [
     'controllers' => [
         'api' => BeaconApiController::class,
     ],
+
+    /**
+     * The cookie names used in this package. You
+     * can override it with your own name
+     * if you need to customize it
+     */
+    'cookies' => [
+        'uuid' => 'beacon_uuid',
+    ],
 ];
